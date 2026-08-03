@@ -15,8 +15,7 @@ export const fxPerUsd = Object.fromEntries(CURRENCIES.map((c) => [c.code, c.perU
 export function formatMoney(amount, code) {
   const abs = Math.abs(amount)
   let digits
-  if (abs >= 1000) digits = 0
-  else if (abs >= 100) digits = 0
+  if (abs >= 100) digits = 0
   else if (abs >= 1) digits = 2
   else if (abs >= 0.01) digits = 3
   else digits = 4

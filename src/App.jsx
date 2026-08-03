@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
-import { PROGRAMS, COUNTRIES, AS_OF, SCENARIO_COUNT, SOURCE_COUNT } from './data/programs.js'
-import { CURRENCIES, fxPerUsd, formatMoney, formatNumber } from './data/currencies.js'
+import { PROGRAMS, AS_OF, SCENARIO_COUNT, SOURCE_COUNT } from './data/programs.js'
 import Calculator from './components/Calculator.jsx'
 import CompareCard from './components/CompareCard.jsx'
 import ProgramGrid from './components/ProgramGrid.jsx'

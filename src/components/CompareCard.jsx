@@ -27,10 +27,16 @@ export default function CompareCard({ programs, currency, selectedId, onSelect }
       <div className="card-head">
         <h2>Compare programmes</h2>
         <div className="tab-group">
-          <button className={`tab ${tab === 'airline' ? 'tab-active' : ''}`} onClick={() => setTab('airline')}>
+          <button
+            className={`tab ${tab === 'airline' ? 'tab-active' : ''}`}
+            onClick={() => { setTab('airline'); setMarket('all') }}
+          >
             Airlines
           </button>
-          <button className={`tab ${tab === 'bank' ? 'tab-active' : ''}`} onClick={() => setTab('bank')}>
+          <button
+            className={`tab ${tab === 'bank' ? 'tab-active' : ''}`}
+            onClick={() => { setTab('bank'); setMarket('all') }}
+          >
             Banks
           </button>
         </div>
