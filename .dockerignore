@@ -1,0 +1,7 @@
+node_modules
+dist
+.claude
+.tokensave
+README.md
+*.log
+.DS_Store

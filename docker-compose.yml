@@ -1,0 +1,8 @@
+services:
+  pointsworth:
+    build: .
+    image: pointsworth:latest
+    container_name: pointsworth
+    ports:
+      - "8080:80"
+    restart: unless-stopped
