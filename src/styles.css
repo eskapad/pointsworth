@@ -13,6 +13,7 @@
   --teal: #41e0c9;
   --blue: #4da3ff;
   --yellow: #f5d76e;
+  --green: #7ee2b8;
   --heat: linear-gradient(90deg, var(--blue), var(--teal), var(--yellow), var(--orange));
   --radius: 22px;
 }
@@ -145,7 +146,7 @@ body {
   border: 1px solid var(--line-strong);
   color: var(--text-2);
 }
-.conf-high { color: #7ee2b8; border-color: rgba(126, 226, 184, 0.3); }
+.conf-high { color: var(--green); border-color: rgba(126, 226, 184, 0.3); }
 .conf-medium { color: var(--yellow); border-color: rgba(245, 215, 110, 0.3); }
 .conf-provisional { color: var(--orange); border-color: rgba(240, 154, 78, 0.35); }
 
@@ -395,7 +396,7 @@ body {
 .type-airline { color: var(--accent); background: rgba(138, 139, 246, 0.12); }
 .type-bank { color: var(--teal); background: rgba(65, 224, 201, 0.1); }
 .conf-dot { width: 7px; height: 7px; border-radius: 50%; margin-left: auto; }
-.conf-dot-high { background: #7ee2b8; }
+.conf-dot-high { background: var(--green); }
 .conf-dot-medium { background: var(--yellow); }
 .conf-dot-provisional { background: var(--orange); }
 .pc-name { font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; }

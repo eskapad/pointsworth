@@ -384,19 +384,19 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.00034, median: 0.00072, high: 0.00094 },
+    usd: { low: 0.00034, median: 0.00072, high: 0.00072 },
     confidence: 'high',
     blurb:
-      'Counter-intuitive programme: app cashback (380 pts = AED 1) usually beats the Skywards transfer (32 pts = 1 mile) — the transfer only wins if you redeem miles above ~2.3¢.',
+      'Counter-intuitive programme: app cashback (380 pts = AED 1) beats the Skywards transfer (32 pts = 1 mile) at every published mile value — break-even is ~2.3¢, above Skywards’ 2.2¢ high. Cashback is the rational default.',
     bands: {
       low: 'Skywards transfer redeemed at typical mile value',
       median: 'App cashback (380 points = AED 1)',
-      high: 'Skywards transfer into premium awards',
+      high: 'App cashback — transfers can’t beat it at published mile values',
     },
     scenarios: [
       { label: 'Skywards transfer · typical', detail: '32 pts = 1 mile, redeemed at ~1.1¢ per mile', cpp: 0.034 },
+      { label: 'Skywards transfer · best published value', detail: '32:1 at Skywards’ 2.2¢ Business-Classic high', cpp: 0.069 },
       { label: 'App cashback', detail: '380 points = AED 1 via Mashreq app', cpp: 0.072 },
-      { label: 'Skywards transfer · premium', detail: '32:1 into a ~3¢ premium-cabin award', cpp: 0.094 },
     ],
     sources: [
       { label: 'Mashreq Vantage', url: 'https://www.mashreq.com/en/uae/neo/mashreq-vantage/' },
