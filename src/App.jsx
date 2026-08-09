@@ -39,7 +39,7 @@ export default function App() {
         </div>
         <h1>
           Know what your miles
-          <br />
+          <br className="hero-br" />
           <span className="hero-dim">are really worth</span>
         </h1>
         <p className="hero-sub">
