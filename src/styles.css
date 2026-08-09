@@ -72,7 +72,18 @@ body {
 .chip-muted { color: var(--text-3); }
 
 /* ── Hero ───────────────────────────────── */
-.hero { margin-bottom: 48px; }
+.hero { margin-bottom: 48px; position: relative; }
+.hero-art {
+  position: absolute;
+  top: -120px; right: -60px;
+  width: min(58vw, 720px);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 60% 40%, black 40%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 70% at 60% 40%, black 40%, transparent 78%);
+}
 .eyebrow {
   display: flex; align-items: center; gap: 8px;
   font-size: 11px; letter-spacing: 0.22em; font-weight: 600;
@@ -384,7 +395,22 @@ body {
   font: inherit; color: inherit;
   padding: 20px;
   transition: border-color 0.15s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
 }
+.pc-art {
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 150px;
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: radial-gradient(circle at 65% 35%, black 30%, transparent 72%);
+  mask-image: radial-gradient(circle at 65% 35%, black 30%, transparent 72%);
+  transition: opacity 0.2s;
+}
+.program-card:hover .pc-art { opacity: 0.38; }
+.program-card > *:not(.pc-art) { position: relative; }
 .program-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 .program-card-active { border-color: rgba(138, 139, 246, 0.55); }
 .pc-top { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
@@ -411,6 +437,19 @@ body {
 }
 
 /* ── Footer ─────────────────────────────── */
+.methodology { position: relative; overflow: hidden; }
+.method-art {
+  position: absolute;
+  top: 50%; right: -20px;
+  transform: translateY(-50%);
+  width: 300px;
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: radial-gradient(circle at 55% 50%, black 30%, transparent 74%);
+  mask-image: radial-gradient(circle at 55% 50%, black 30%, transparent 74%);
+}
+.methodology h3, .methodology p { position: relative; }
 .methodology h3 { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
 .methodology p { font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 12px; max-width: 760px; }
 .methodology strong { color: var(--text); font-weight: 500; }
@@ -426,4 +465,6 @@ body {
   .bands { grid-template-columns: 1fr; }
   .topbar { flex-direction: column; gap: 14px; align-items: flex-start; }
   .page { padding: 20px 16px 60px; }
+  .hero-art { width: 85vw; top: -60px; right: -40px; opacity: 0.4; }
+  .method-art { display: none; }
 }

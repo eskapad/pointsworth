@@ -56,6 +56,13 @@ export default function ProgramGrid({ programs, selectedId, onSelect }) {
               className={`card program-card ${p.id === selectedId ? 'program-card-active' : ''}`}
               onClick={() => onSelect(p.id)}
             >
+              <img
+                className="pc-art"
+                src={`/art/accent-${p.country.toLowerCase()}.jpg`}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
               <div className="pc-top">
                 <span className="pc-flag">{COUNTRIES[p.country].flag}</span>
                 <span className={`pc-type ${p.type === 'airline' ? 'type-airline' : 'type-bank'}`}>

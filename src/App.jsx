@@ -32,6 +32,7 @@ export default function App() {
       </header>
 
       <section className="hero">
+        <img className="hero-art" src="/art/hero.jpg" alt="" aria-hidden="true" />
         <div className="eyebrow">
           <span className="eyebrow-dot" />
           POINTS VALUATOR
@@ -83,6 +84,7 @@ export default function App() {
 
       <footer className="footer">
         <div className="card methodology">
+          <img className="method-art" src="/art/method.jpg" alt="" aria-hidden="true" />
           <h3>How these valuations work</h3>
           <p>
             No airline or bank publishes “what a point is worth”, so every figure here is an
