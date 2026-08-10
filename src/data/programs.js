@@ -1,4 +1,4 @@
-// Valuation dataset — July 2026.
+// Valuation dataset — August 2026.
 // All values stored as USD per point (low / median / high). The UI converts
 // to AED / SAR / QAR using the fixed USD pegs.
 //
@@ -18,7 +18,7 @@ export const COUNTRIES = {
   TR: { name: 'Türkiye', flag: '🇹🇷' },
 }
 
-export const AS_OF = 'July 2026'
+export const AS_OF = 'August 2026'
 
 export const PROGRAMS = [
   // ─────────────── Airlines ───────────────
@@ -30,10 +30,10 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'mile',
     homeCurrency: 'AED',
-    usd: { low: 0.005, median: 0.011, high: 0.022 },
+    usd: { low: 0.005, median: 0.011, high: 0.02 },
     confidence: 'high',
     blurb:
-      'Dynamic pricing means value swings widely. Classic Rewards in premium cabins are the sweet spot; merchandise and Skywards Everyday sit at the bottom.',
+      'Dynamic pricing means value swings widely. Classic Rewards in premium cabins are the sweet spot; merchandise and Skywards Everyday sit at the bottom. May 2026 devaluation: premium-cabin Classic and Upgrade Rewards rose ~15% (economy unchanged), softened by a new one-way Business Saver at 50% of return pricing.',
     bands: {
       low: 'Skywards Everyday, merchandise, poorly-priced dynamic awards',
       median: 'Economy Classic Rewards on typical routes',
@@ -42,12 +42,12 @@ export const PROGRAMS = [
     scenarios: [
       { label: 'Skywards Everyday & merchandise', detail: 'Everyday retail redemptions price around AED 0.02 per mile', cpp: 0.5 },
       { label: 'DXB → LHR · Economy Classic', detail: '42,500 miles + ~AED 400 fees vs ~AED 2,300 cash fare', cpp: 1.2 },
-      { label: 'DXB → LHR · Business Classic', detail: '85,000 miles + ~AED 1,150 fees vs ~AED 8,000 cash fare', cpp: 2.2 },
+      { label: 'DXB → LHR · Business Classic', detail: '97,750 miles (post-May-2026 +15%) + ~AED 1,150 fees vs ~AED 8,000 cash fare', cpp: 1.91 },
     ],
     sources: [
       { label: 'NerdWallet Skywards valuation', url: 'https://www.nerdwallet.com/travel/learn/how-much-are-emirates-skywards-miles-worth' },
       { label: 'AwardFares Skywards guide', url: 'https://awardfares.com/programs/emirates-skywards' },
-      { label: 'WalletHub Emirates miles value', url: 'https://wallethub.com/answers/rp/emirates-miles-value-1000540-2140859401/' },
+      { label: 'AwardWallet — May 2026 devaluation', url: 'https://awardwallet.com/news/airlines/emirates-skywards-2026-devaluation/' },
     ],
   },
   {
@@ -61,21 +61,22 @@ export const PROGRAMS = [
     usd: { low: 0.006, median: 0.01, high: 0.016 },
     confidence: 'high',
     blurb:
-      'GuestSeat fares were cut in the last programme refresh. Best value on long-haul Business and well-priced partner awards; non-flight redemptions dilute value.',
+      'Saver Awards (renamed from GuestSeats in Nov 2025, shown as “Promo seats” when booking) anchor the value. Best on long-haul Business and well-priced partner awards; Gold tier and above get up to 10% off Promo-seat awards since April 2026. Non-flight redemptions dilute value.',
     bands: {
       low: 'Hotels, car hire and other non-flight redemptions',
-      median: 'Economy GuestSeat awards',
-      high: 'Business & First GuestSeats, sweet-spot partner awards',
+      median: 'Economy Saver Awards',
+      high: 'Business & First Saver Awards, sweet-spot partner awards',
     },
     scenarios: [
       { label: 'Non-flight redemptions', detail: 'Hotels and car hire typically return under 1¢ per mile', cpp: 0.6 },
-      { label: 'AUH → LHR · Economy GuestSeat', detail: '44,000 miles + ~AED 350 fees vs ~AED 2,100 cash fare', cpp: 1.1 },
-      { label: 'AUH → CDG · Business GuestSeat', detail: '88,000 miles + ~AED 600 fees vs ~AED 5,600 cash fare', cpp: 1.55 },
+      { label: 'AUH → LHR · Economy Saver', detail: '44,000 miles + ~AED 350 fees vs ~AED 2,100 cash fare', cpp: 1.1 },
+      { label: 'AUH → CDG · Business Saver', detail: '88,000 miles + ~AED 600 fees vs ~AED 5,600 cash fare', cpp: 1.55 },
     ],
     sources: [
       { label: 'The Point Calculator — Etihad', url: 'https://www.thepointcalculator.com/us/etihad-guest-miles/etihad-guest-miles-value/' },
       { label: 'The Points Guy — Etihad Guest', url: 'https://thepointsguy.com/loyalty-programs/best-strategies-for-etihad-guest-miles/' },
       { label: 'AwardFares Etihad Guest', url: 'https://awardfares.com/programs/etihad-guest-miles' },
+      { label: 'AwardFares — the new Etihad Guest', url: 'https://awardfares.com/blog/introducing-etihad-guest/' },
     ],
   },
   {
@@ -89,7 +90,7 @@ export const PROGRAMS = [
     usd: { low: 0.007, median: 0.014, high: 0.045 },
     confidence: 'high',
     blurb:
-      'Qatar Airways uses Avios, so value tracks the wider Avios ecosystem. Off-peak QSuite awards are among the highest-value redemptions anywhere in points.',
+      'Qatar Airways uses Avios, so value tracks the wider Avios ecosystem. Off-peak QSuite awards are among the highest-value redemptions anywhere in points. Partner short-haul award floors moved in the July 2026 partner devaluations; own-metal pricing is intact.',
     bands: {
       low: 'Peak-date economy, upgrades, low-value dynamic pricing',
       median: 'Economy awards, typical Avios benchmark',
@@ -171,7 +172,7 @@ export const PROGRAMS = [
     usd: { low: 0.006, median: 0.01, high: 0.014 },
     confidence: 'provisional',
     blurb:
-      'Launched October 2025 alongside Riyadh Air’s first London flights; full rollout during 2026. Dynamic earn and redemption tied to cash fares (points never expire, shareable with family). No redemption values published yet — range modelled on comparable revenue-based programmes.',
+      'Launched October 2025 alongside Riyadh Air’s first London flights; full rollout during 2026. Dynamic earn and redemption tied to cash fares (points never expire, shareable with family), now extended by RX Pay (July 2026) — a Mastercard with Saudi banks earning Sfeer points on everyday spend, with retail redemption per Riyadh Air’s press release. Still no published redemption values — range modelled on comparable revenue-based programmes; RX Pay’s retail rate is the likely future anchor.',
     bands: {
       low: 'Weak dynamic pricing dates (modelled)',
       median: 'Typical fare-linked redemptions (modelled)',
@@ -183,7 +184,8 @@ export const PROGRAMS = [
     sources: [
       { label: 'Riyadh Air — Sfeer', url: 'https://www.riyadhair.com/en/sfeer' },
       { label: 'One Mile at a Time — Sfeer launch', url: 'https://onemileatatime.com/news/riyadh-air-loyalty-program/' },
-      { label: 'Upgraded Points — what we know', url: 'https://upgradedpoints.com/news/everything-we-know-riyadh-air-loyalty/' },
+      { label: 'Riyadh Air — RX Pay press release', url: 'https://www.zawya.com/en/press-release/companies-news/riyadh-air-launches-rx-pay-its-new-branded-card-that-rewards-guests-everywhere-they-go-407735' },
+      { label: 'AwardWallet — Sfeer programme', url: 'https://awardwallet.com/airlines/riyadh-air-sfeer/' },
     ],
   },
   {
@@ -194,23 +196,24 @@ export const PROGRAMS = [
     country: 'BH',
     unit: 'mile',
     homeCurrency: 'BHD',
-    usd: { low: 0.005, median: 0.01, high: 0.016 },
-    confidence: 'provisional',
+    usd: { low: 0.0055, median: 0.01, high: 0.016 },
+    confidence: 'medium',
     blurb:
-      'Bahrain’s flag carrier. Awards from 6,000 miles and well-priced Falcon Gold upgrades, but Gulf Air publishes no valuation and expert coverage is thin — range modelled from its redemption tables against typical cash fares.',
+      'Bahrain’s flag carrier. Awards from 6,000 miles and well-priced Falcon Gold upgrades. A published floor now anchors the low end: converting to Accor ALL (4,000 miles = 1,000 points = €20) guarantees ~0.58¢ per mile; Gulf Air sells top-up miles at USD 25 per 1,000 (a 2.5¢ ceiling).',
     bands: {
-      low: 'Short-haul economy awards vs cheap cash fares',
+      low: 'Accor ALL conversion floor (~0.58¢ guaranteed)',
       median: 'Economy awards on typical routes (modelled)',
       high: 'Falcon Gold awards & upgrades',
     },
     scenarios: [
-      { label: 'Short-haul economy (modelled)', detail: 'BAH → GCC awards against low cash fares', cpp: 0.5 },
+      { label: 'Accor ALL conversion floor', detail: '4,000 miles = 1,000 ALL points = €20 → ~0.58¢ per mile guaranteed', cpp: 0.58 },
       { label: 'Economy awards (modelled)', detail: 'Typical medium/long-haul redemptions', cpp: 1.0 },
       { label: 'Falcon Gold upgrades', detail: 'Business-cabin awards & upgrades, aimed well', cpp: 1.6 },
     ],
     sources: [
       { label: 'Gulf Air — redeem miles', url: 'https://www.gulfair.com/falconflyer/redeem' },
-      { label: 'AwardBird — Falconflyer review', url: 'https://www.awardbird.com/frequent-flyer-programs/falconflyer-gulf-air' },
+      { label: 'Accor ALL — Gulf Air partner', url: 'https://all.accor.com/a/en/loyalty-program/partners/airlines/gulfair.html' },
+      { label: 'Accor ALL — points value', url: 'https://all.accor.com/loyalty-program/use/booking-with-points/index.en.shtml' },
     ],
   },
   {
@@ -237,6 +240,7 @@ export const PROGRAMS = [
     ],
     sources: [
       { label: 'Oasis Club — redemption table', url: 'https://oasisclub.kuwaitairways.com/en/SpendMiles/Pages/MilesRedemptionTable.aspx' },
+      { label: 'Oasis redemption table (PDF)', url: 'https://www.kuwaitairways.com/Documents/Redemption_Table_En_V0920.pdf' },
       { label: 'Oasis Club — FAQs', url: 'https://oasisclub.kuwaitairways.com/en/Contact/Pages/FAQs.aspx' },
     ],
   },
@@ -251,7 +255,7 @@ export const PROGRAMS = [
     usd: { low: 0.007, median: 0.011, high: 0.02 },
     confidence: 'high',
     blurb:
-      'Widely held across the Gulf. Devalued in 2024 (NerdWallet now ~0.7¢), but typical redemptions still land around 1.1¢ and long-haul Business sweet spots reach ~2¢. Values shown in USD as the lira floats.',
+      'Widely held across the Gulf. Devalued in 2024 and again quietly in Dec 2025 (same-country partner awards +50%, new Hawaii zone), but typical redemptions still land around 1.1¢ and fixed-chart long-haul Business sweet spots reach ~2¢. Values shown in USD as the lira floats.',
     bands: {
       low: 'Post-devaluation dynamic economy pricing',
       median: 'Typical economy awards booked ~90 days out',
@@ -260,11 +264,12 @@ export const PROGRAMS = [
     scenarios: [
       { label: 'Dynamic economy · weak dates', detail: 'Post-2024-devaluation pricing on many routes', cpp: 0.7 },
       { label: 'Economy awards · typical', detail: 'Average redemption booked ~90 days ahead', cpp: 1.1 },
-      { label: 'Business long-haul sweet spots', detail: 'Close-in bookings reached 1.7–2¢ in published studies', cpp: 2.0 },
+      { label: 'Business long-haul sweet spots', detail: '65K US–Istanbul / 85–90K US–Europe partner Business on the fixed chart vs $2,500+ cash fares', cpp: 2.0 },
     ],
     sources: [
       { label: 'NerdWallet — Turkish miles value', url: 'https://www.nerdwallet.com/travel/learn/turkish-airlines-miles-value' },
-      { label: 'Upgraded Points — best redemptions', url: 'https://upgradedpoints.com/travel/airlines/best-ways-to-redeem-turkish-airlines-miles-smiles/' },
+      { label: 'AwardWallet — Turkish award chart', url: 'https://awardwallet.com/airlines/turkish-airlines-award-chart/' },
+      { label: 'TPG monthly valuations', url: 'https://thepointsguy.com/loyalty-programs/monthly-valuations/' },
       { label: 'AwardFares — Miles&Smiles', url: 'https://awardfares.com/programs/turkish-airlines-miles-and-smiles' },
     ],
   },
@@ -278,10 +283,10 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.0025, median: 0.0055, high: 0.011 },
+    usd: { low: 0.0025, median: 0.0055, high: 0.01 },
     confidence: 'medium',
     blurb:
-      'UAE Amex transfers to Skywards at 2:1 (unlike 1:1 in some markets), so each MR point is worth roughly half a Skywards mile. Vouchers and statement credit sit below that.',
+      'UAE Amex transfers to Skywards at 2:1, so each MR point is worth roughly half a Skywards mile. The US (5:4, Sep 2025) and UK (2:1, Feb 2026) have since converged toward the UAE’s long-standing ratio. Vouchers and statement credit sit below the transfer value.',
     bands: {
       low: 'Statement credit & retail vouchers',
       median: 'Skywards transfer redeemed at typical mile value',
@@ -290,11 +295,12 @@ export const PROGRAMS = [
     scenarios: [
       { label: 'Vouchers / statement credit', detail: 'Weakest use of MR points', cpp: 0.25 },
       { label: 'Skywards transfer · economy value', detail: '20,000 MR → 10,000 miles at ~1.1¢ per mile', cpp: 0.55 },
-      { label: 'Skywards transfer · premium value', detail: '2:1 transfer into a ~2.2¢ Business Classic award', cpp: 1.1 },
+      { label: 'Skywards transfer · premium value', detail: '2:1 transfer into a ~2.0¢ Business Classic award', cpp: 1.0 },
     ],
     sources: [
       { label: 'Emirates — Amex partner page', url: 'https://www.emirates.com/us/english/skywards/partners/amex/' },
       { label: 'TPG — MR transfer partners', url: 'https://thepointsguy.com/credit-cards/membership-rewards-partner-guide/' },
+      { label: 'Head for Points — MR→Skywards changes', url: 'https://headforpoints.com/2025/12/18/american-express-membership-rewards-transfers-to-emirates-devalued/' },
     ],
   },
   {
@@ -357,21 +363,23 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.0014, median: 0.0019, high: 0.0025 },
+    usd: { low: 0.0007, median: 0.0011, high: 0.0013 },
     confidence: 'high',
     blurb:
-      'Cashback anchors the value: 1 point = AED 0.007, redeemed in AED 50 blocks. Miles exchange and Shukran conversions can edge slightly higher.',
+      'Devalued: the old AED 0.007 cashback rate is no longer published anywhere. Current anchors are all FAB-published — in-store POS at 25,000 points = AED 100 (AED 0.004/pt, value varies by product, 2-year validity) and transfers at 16:1 to Skywards, 12:1 to Etihad Guest, 14:1 to Shukran.',
     bands: {
-      low: 'Retail vouchers & Shukran conversion',
-      median: 'Statement cashback (AED 0.007 per point)',
-      high: 'Miles exchange sweet spots',
+      low: 'Skywards transfer at typical mile value',
+      median: 'In-store POS redemption (AED 0.004 per point)',
+      high: 'Etihad Guest transfer sweet spots',
     },
     scenarios: [
-      { label: 'Retail vouchers', detail: 'Varies by partner brand', cpp: 0.14 },
-      { label: 'Statement cashback', detail: '1 point = AED 0.007, min AED 50 (≈7,143 pts)', cpp: 0.19 },
-      { label: 'Miles exchange', detail: 'Converting into airline miles at favourable moments', cpp: 0.25 },
+      { label: 'Skywards transfer · typical', detail: '16 FAB = 1 mile at ~1.1¢', cpp: 0.07 },
+      { label: 'Calculator cashback', detail: '66,800 points = AED 200 (~AED 0.003/pt)', cpp: 0.08 },
+      { label: 'In-store POS', detail: '25,000 points = AED 100', cpp: 0.11 },
+      { label: 'Etihad transfer · sweet spot', detail: '12 FAB = 1 mile at ~1.6¢', cpp: 0.13 },
     ],
     sources: [
+      { label: 'FAB Rewards FAQ (PDF)', url: 'https://www.bankfab.com/-/media/fabgroup/home/personal/rewards-faqs/fab-rewards-faqs/fab-rewards-faqs.pdf?view=1' },
       { label: 'FAB Rewards programme', url: 'https://www.bankfab.com/en-ae/personal/rewards/fab-rewards/program' },
       { label: 'FAB Rewards calculator', url: 'https://www.bankfab.com/en-ae/personal/rewards/fab-rewards/calculate' },
     ],
@@ -384,23 +392,24 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.00034, median: 0.00072, high: 0.00072 },
+    usd: { low: 0.00034, median: 0.00082, high: 0.00265 },
     confidence: 'high',
     blurb:
-      'Counter-intuitive programme: app cashback (380 pts = AED 1) beats the Skywards transfer (32 pts = 1 mile) at every published mile value — break-even is ~2.3¢, above Skywards’ 2.2¢ high. Cashback is the rational default.',
+      'The story flipped in 2026: new transfer partners — Qatar Airways Privilege Club at 17:1 and Etihad Guest at 22:1 — mean premium Avios redemptions now return ~3.7× the app cashback. Published fixed rates: cashback 380 pts = AED 1, noon 288 = AED 1, Amazon.ae/POS 303 = AED 1; Skywards stays 32:1.',
     bands: {
-      low: 'Skywards transfer redeemed at typical mile value',
-      median: 'App cashback (380 points = AED 1)',
-      high: 'App cashback — transfers can’t beat it at published mile values',
+      low: 'Skywards transfer (32:1) at typical mile value',
+      median: 'Published fixed rates (cashback / noon blend)',
+      high: 'Avios transfer (17:1) into off-peak QSuite awards',
     },
     scenarios: [
-      { label: 'Skywards transfer · typical', detail: '32 pts = 1 mile, redeemed at ~1.1¢ per mile', cpp: 0.034 },
-      { label: 'Skywards transfer · best published value', detail: '32:1 at Skywards’ 2.2¢ Business-Classic high', cpp: 0.069 },
-      { label: 'App cashback', detail: '380 points = AED 1 via Mashreq app', cpp: 0.072 },
+      { label: 'Skywards 32:1 · typical', detail: '32 pts = 1 mile at ~1.1¢', cpp: 0.034 },
+      { label: 'App cashback', detail: '380 points = AED 1', cpp: 0.072 },
+      { label: 'noon redemption', detail: '288 points = AED 1', cpp: 0.095 },
+      { label: 'Avios 17:1 · QSuite off-peak', detail: '17 pts = 1 Avios at ~4.5¢ off-peak QSuite value', cpp: 0.265 },
     ],
     sources: [
+      { label: 'Mashreq Vantage redemption structure (PDF)', url: 'https://www.mashreq.com/-/jssmedia/pdfs/neo/vantage/vantage-points-earning-redemption-structure_en.ashx' },
       { label: 'Mashreq Vantage', url: 'https://www.mashreq.com/en/uae/neo/mashreq-vantage/' },
-      { label: 'Emirates — Mashreq partner page', url: 'https://www.emirates.com/ae/english/skywards/partners/mashreq-bank/' },
     ],
   },
 
@@ -470,11 +479,11 @@ export const PROGRAMS = [
       'Cash/bill redemptions anchor the value (~AED 0.005 per point); transfers to Avios or Etihad Guest at 20:1 only beat that if you aim the miles at premium-cabin awards.',
     bands: {
       low: 'Avios/Etihad transfers redeemed at ordinary mile values',
-      median: 'Cashback, utilities, Salik top-ups (~AED 0.005/pt)',
+      median: 'Bill payments & travel (20,000 = AED 100)',
       high: 'Avios transfer into off-peak QSuite awards',
     },
     scenarios: [
-      { label: 'Cashback & bill payments', detail: '≈100,000 Wala’a = AED 500', cpp: 0.136 },
+      { label: 'Bills & travel', detail: '20,000 Wala’a = AED 100 (cashback is AED 80 — SHAMS cards only)', cpp: 0.136 },
       { label: 'Avios/Etihad transfer · typical', detail: '20,000 Wala’a = 1,000 miles at ~1.4¢', cpp: 0.07 },
       { label: 'Avios transfer · QSuite sweet spot', detail: '20:1 into a ~4.5¢ off-peak QSuite award', cpp: 0.225 },
     ],
@@ -518,10 +527,10 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.006, median: 0.009, high: 0.0176 },
+    usd: { low: 0.006, median: 0.009, high: 0.016 },
     confidence: 'medium',
     blurb:
-      'Strong per-point value: cash at 45:1, travel rebates at 30:1 (15,000 pts = AED 500), and Skywards transfers at 1,000 → 800 miles (recently devalued from 1:1). Citi’s UAE consumer book now sits under FAB.',
+      'Strong per-point value: cash at 45:1, travel rebates at 30:1 (15,000 pts = AED 500, re-verified live), and Skywards transfers at 1,000 → 800 miles (devalued from 1:1).',
     bands: {
       low: 'Cash for points (45 points = AED 1)',
       median: 'Travel rebate (15,000 points = AED 500)',
@@ -530,7 +539,7 @@ export const PROGRAMS = [
     scenarios: [
       { label: 'Cash for points', detail: '45 points = AED 1', cpp: 0.605 },
       { label: 'Travel rebate', detail: '15,000 points = AED 500 against travel spend', cpp: 0.907 },
-      { label: 'Skywards transfer · premium', detail: '1,000 → 800 miles into a ~2.2¢ award', cpp: 1.76 },
+      { label: 'Skywards transfer · premium', detail: '1,000 → 800 miles into a ~2.0¢ award', cpp: 1.6 },
     ],
     sources: [
       { label: 'Citibank UAE — rewards & redemptions', url: 'https://www.citibank.ae/credit-cards/rewards-and-redemptions/rewards-rebate' },
@@ -545,7 +554,7 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.00028, median: 0.00055, high: 0.0011 },
+    usd: { low: 0.00028, median: 0.00055, high: 0.001 },
     confidence: 'medium',
     blurb:
       'Published transfer ratio: 20 CBD points = 1 Skywards or Etihad Guest mile (min 10,000 points). CBD doesn’t publish a cashback rate, so the mile value drives the whole range.',
@@ -557,10 +566,10 @@ export const PROGRAMS = [
     scenarios: [
       { label: 'Miles transfer · economy value', detail: '20 points = 1 mile at ~0.55¢', cpp: 0.028 },
       { label: 'Miles transfer · typical', detail: '20 points = 1 mile at ~1.1¢', cpp: 0.055 },
-      { label: 'Miles transfer · premium', detail: '20:1 into a ~2.2¢ Business Classic award', cpp: 0.11 },
+      { label: 'Miles transfer · premium', detail: '20:1 into a ~2.0¢ Business Classic award', cpp: 0.1 },
     ],
     sources: [
-      { label: 'CBD Rewards', url: 'https://www.cbd.ae/personal/more/cbd-rewards' },
+      { label: 'CBD Rewards FAQ (PDF)', url: 'https://www.cbd.ae/docs/default-source/default-document-library/faqs-cbd-reward-points-wallet-3.pdf' },
       { label: 'PointCheckout — CBD programme', url: 'https://www.pointcheckout.com/en/blog/wh5az6/all-you-need-to-know-about-the-commercial-bank-of-dubai' },
     ],
   },
@@ -597,19 +606,22 @@ export const PROGRAMS = [
     country: 'AE',
     unit: 'point',
     homeCurrency: 'AED',
-    usd: { low: 0.0019, median: 0.00245, high: 0.0033 },
-    confidence: 'provisional',
+    usd: { low: 0.0011, median: 0.0025, high: 0.004 },
+    confidence: 'medium',
     blurb:
-      'Emirates Islamic runs several schemes (SmartMiles on Flex/Emarati cards, Cashback Points, Amazon points at 1 = AED 1). SmartMiles redeem via a travel portal with no fixed published rate — range modelled. Its Skywards co-brand cards earn Skywards miles directly.',
+      'Emirates Islamic now publishes conversion ratios: 10,000 SmartMiles = 1,000 Skywards miles (10:1) or 2,500 Etihad Guest miles (4:1), in multiples of 10,000, transferred within 5 working days. The Etihad route is the clear winner. Its Skywards co-brand cards earn Skywards miles directly.',
     bands: {
-      low: 'Weaker portal pricing',
-      median: 'Travel portal “instant purchase” (modelled)',
-      high: 'Well-priced flight redemptions',
+      low: 'Skywards transfer (10:1) at typical mile value',
+      median: 'Etihad Guest transfer (4:1) at typical mile value',
+      high: 'Etihad transfer into Business sweet spots',
     },
     scenarios: [
-      { label: 'Travel portal (modelled)', detail: 'Instant purchase at 300+ airlines; from 4,000 SmartMiles', cpp: 0.245 },
+      { label: 'Skywards 10:1 · typical', detail: '10,000 SmartMiles = 1,000 miles at ~1.1¢', cpp: 0.11 },
+      { label: 'Etihad 4:1 · typical', detail: '10,000 SmartMiles = 2,500 miles at ~1.0¢', cpp: 0.25 },
+      { label: 'Etihad 4:1 · Business sweet spot', detail: '2,500 miles per 10,000 at ~1.6¢', cpp: 0.4 },
     ],
     sources: [
+      { label: 'EI — SmartMiles conversion', url: 'https://www.emiratesislamic.ae/en/personal-banking/cards/credit-cards/ei-smartmiles-conversion' },
       { label: 'Emirates Islamic — card rewards', url: 'https://www.emiratesislamic.ae/en/help-and-support/understanding-your-credit-card-rewards' },
     ],
   },
@@ -623,22 +635,22 @@ export const PROGRAMS = [
     country: 'SA',
     unit: 'point',
     homeCurrency: 'SAR',
-    usd: { low: 0.0004, median: 0.00056, high: 0.00124 },
+    usd: { low: 0.0004, median: 0.00056, high: 0.00133 },
     confidence: 'medium',
     blurb:
-      'Best used as a feeder into Saudia AlFursan (18–24 points per mile, with frequent 30–40% transfer bonuses). Merchant redemptions vary by partner.',
+      'Best used as a feeder into Saudia AlFursan (18–24 points per mile, with recurring 30–50% transfer bonuses). A Turkish Miles&Smiles route at 20:1 also exists and can compete during bonuses. Merchant redemptions vary by partner.',
     bands: {
       low: 'AlFursan transfer at 24:1, economy value',
       median: 'AlFursan transfer at 18:1, typical value',
-      high: '18:1 with transfer bonus into Business awards',
+      high: '18:1 with 50% transfer bonus into Business awards',
     },
     scenarios: [
       { label: 'AlFursan 24:1 · economy', detail: '24 Mokafaa points = 1 mile at ~1¢', cpp: 0.04 },
       { label: 'AlFursan 18:1 · typical', detail: '18 Mokafaa points = 1 mile at ~1¢', cpp: 0.056 },
-      { label: 'AlFursan 18:1 + 40% bonus · Business', detail: 'Promo bonus into a ~1.6¢ Business reward', cpp: 0.124 },
+      { label: 'AlFursan 18:1 + 50% bonus · Business', detail: 'Effective 12 pts/mile into a ~1.6¢ Business reward', cpp: 0.133 },
     ],
     sources: [
-      { label: 'Al Rajhi — AlFursan transfer', url: 'https://www.alrajhibank.com.sa/en/Personal/Offers/Mokafaa/AlFursan' },
+      { label: 'Al Rajhi — AlFursan transfer', url: 'https://www.alrajhibank.com.sa/en/Personal/Offers/CardsOffers/Mokafaa/AlFursan' },
       { label: 'Saudia — Mokafaa partner page', url: 'https://www.saudia.com/pages/loyalty-program/alfursan-partners/financial-partners/mokafaa' },
     ],
   },
@@ -676,22 +688,23 @@ export const PROGRAMS = [
     country: 'SA',
     unit: 'point',
     homeCurrency: 'SAR',
-    usd: { low: 0.00213, median: 0.00267, high: 0.003 },
+    usd: { low: 0.00213, median: 0.00267, high: 0.00267 },
     confidence: 'high',
     blurb:
-      'Clean published anchors: 1 LAK = SAR 0.008 as cash or SAR 0.01 as e-vouchers. SNB is also an AlFursan financial partner, which is where the modest high end comes from.',
+      'Clean published anchors: 1 LAK = SAR 0.008 as cash or SAR 0.01 as e-vouchers — and the e-voucher is the ceiling: even the best transfer (AlFursan at 7:1 into a 1.6¢ Business award) returns less. Points expire 12 months after crediting, so redeem on a schedule.',
     bands: {
       low: 'Cash redemption (1 LAK = SAR 0.008)',
       median: 'E-vouchers (1 LAK = SAR 0.01)',
-      high: 'Air-miles transfer sweet spots',
+      high: 'E-vouchers — flat top; transfers never beat it',
     },
     scenarios: [
       { label: 'Cash redemption', detail: '1 LAK point = SAR 0.008', cpp: 0.213 },
       { label: 'E-voucher', detail: '1 LAK point = SAR 0.01', cpp: 0.267 },
-      { label: 'Air-miles transfers', detail: 'AlFursan partner conversions, aimed well', cpp: 0.3 },
+      { label: 'AlFursan transfer · runner-up', detail: '7,000 LAK = 1,000 miles at ~1.6¢ — below the e-voucher ceiling', cpp: 0.229 },
     ],
     sources: [
       { label: 'SNB — LAK Rewards', url: 'https://www.alahli.com/en/pages/personal-banking/credit-cards/lak-rewards' },
+      { label: 'LAK T&C (PDF)', url: 'https://www.alahli.com/-/media/project/snb/snb-web/documents/2025/tc/lak-tc-eng.pdf' },
       { label: 'PointCheckout — LAK programme', url: 'https://www.pointcheckout.com/en/blog/okl581/all-you-need-to-know-about-the-lak-rewards-program' },
     ],
   },
@@ -788,7 +801,7 @@ export const PROGRAMS = [
     usd: { low: 0.022, median: 0.0275, high: 0.033 },
     confidence: 'high',
     blurb:
-      'Consistent anchor around QAR 0.10 per point: gift vouchers at ~10 fils each and 1,000 points = QAR 100 on the Qgrabs portal. FlyMiles flight redemptions can stretch a little further.',
+      'Anchored by CBQ’s published Sadara Visa Infinite figure — 10,000 CB Reward Points worth QAR 1,000 (stated in its joining-bonus context) — consistent with vouchers at ~10 fils per point and 1,000 points = QAR 100 on Qgrabs. FlyMiles flight redemptions can stretch a little further.',
     bands: {
       low: 'Weaker voucher partners',
       median: 'Vouchers & Qgrabs (≈QAR 0.10 per point)',
@@ -800,8 +813,8 @@ export const PROGRAMS = [
       { label: 'FlyMiles flights', detail: '5,000 FlyMiles ≈ a Dubai ticket / QAR 500', cpp: 3.3 },
     ],
     sources: [
-      { label: 'CBQ Rewards FAQ', url: 'https://www.cbqrewards.com/faqs.aspx' },
-      { label: 'CBQ — credit card rewards', url: 'https://www.cbq.com.qa/en/personal/cards/cards-sub-pages/credit-card-rewards---faqs' },
+      { label: 'CBQ — Sadara Visa Infinite (published point value)', url: 'https://www.cbq.com.qa/en/personal/cards/consumer-credit-cards/sadara-visa-infinite-credit-card' },
+      { label: 'CBQ — credit card rewards FAQ', url: 'https://www.cbq.com.qa/en/personal/cards/cards-sub-pages/credit-card-rewards---faqs' },
     ],
   },
   {
@@ -839,22 +852,24 @@ export const PROGRAMS = [
     country: 'QA',
     unit: 'point',
     homeCurrency: 'QAR',
-    usd: { low: 0.007, median: 0.014, high: 0.025 },
-    confidence: 'provisional',
+    usd: { low: 0.0055, median: 0.0096, high: 0.036 },
+    confidence: 'high',
     blurb:
-      'Earn 1 Doha Mile per QAR 5–8 spent; redeems into Privilege Club (Avios) and Shukran, but Doha Bank publishes no conversion rate — range modelled assuming a near-parity Avios transfer. Its Qatar Airways co-brand card earns Avios directly instead.',
+      'Doha Bank publishes exact rates: cashback at QR 0.02 per mile, POS at partner stores (incl. Lulu) at QR 0.035, and an Avios exchange at 1 Doha Mile = 0.8 Avios (revised from 1:1 in Oct 2022 — our earlier near-parity model was wrong). Earn ~1 mile per QAR 7–8. Its Qatar Airways co-brand card earns Avios directly instead.',
     bands: {
-      low: 'Shukran & voucher redemptions (modelled)',
-      median: 'Avios conversion at typical Avios value (modelled)',
-      high: 'Avios aimed at premium-cabin awards',
+      low: 'Cashback (QR 0.02 per mile)',
+      median: 'POS at partner stores (QR 0.035 per mile)',
+      high: '0.8:1 Avios exchange into off-peak QSuite awards',
     },
     scenarios: [
-      { label: 'Shukran & vouchers (modelled)', detail: 'No published rate; conservative estimate', cpp: 0.7 },
-      { label: 'Avios conversion (modelled)', detail: 'Assumes near-parity transfer at ~1.4¢/Avios', cpp: 1.4 },
-      { label: 'Avios · premium awards', detail: 'Aimed at off-peak QSuite pricing', cpp: 2.5 },
+      { label: 'Cashback', detail: '10,000 Doha Miles = QR 200 (QR 0.02/mile)', cpp: 0.55 },
+      { label: 'POS at partner stores', detail: '10,000 Doha Miles = QR 350 (QR 0.035/mile)', cpp: 0.96 },
+      { label: 'Avios conversion · typical', detail: '1 Doha Mile = 0.8 Avios at ~1.4¢', cpp: 1.12 },
+      { label: 'Avios · off-peak QSuite', detail: '0.8 Avios per mile at ~4.5¢', cpp: 3.6 },
     ],
     sources: [
-      { label: 'Doha Bank — Doha Miles portal', url: 'https://www.dohamiles.com/doha/customer.html?action=rewards' },
+      { label: 'Doha Bank — Doha Miles', url: 'https://www.dohabank.com.qa/personal/cards/credit-card-offers/doha-miles/' },
+      { label: 'Doha Bank — Avios exchange programme', url: 'https://www.dohabank.com.qa/personal/cards/credit-card-offers/doha-miles/doha-miles-exchange-program/' },
       { label: 'Qatar Airways — Doha Bank cards', url: 'https://www.qatarairways.com/en/Privilege-Club/our-partners/doha-bank-credit-cards.html' },
     ],
   },

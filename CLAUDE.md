@@ -55,6 +55,10 @@ where tasks are independent:
   market, adversarially audits every proposed change, returns an edit plan.
   Scope it with `args: {focus: ["id", ...]}`. Afterwards: apply edits, bump
   `AS_OF`, run audit, update README + memory.
+  **This runs automatically**: a local scheduled task
+  (`pointsworth-monthly-refresh`, 1st of each month) executes the full cycle
+  and pushes. Don't run a second full refresh in the same month unless a
+  devaluation hits the news; keep the task's prompt in sync with this file.
 - *UI feature*: `gulf-ui-engineer` implements → `design-reviewer` critiques →
   fix `BREAKS`/`OFF-SYSTEM` findings before commit.
 - *Release*: audit + build green → commit (imperative subject, why in body) →
@@ -69,9 +73,12 @@ where tasks are independent:
   huge *because points accrue slowly* — never present per-point value as the
   whole story.
 - Transfer ratios in the dataset (keep derived values consistent — the
-  auditor checks): Mashreq→Skywards 32:1 · CBD→Skywards/Etihad 20:1 ·
-  DIB→Avios/Etihad 20:1 · Citi UAE→Skywards 1000:800 · Amex UAE 2:1 ·
-  Amex KSA→AlFursan 2:1 · Mokafaa→AlFursan 18–24:1.
+  auditor checks): Mashreq→Skywards 32:1, →Etihad 22:1, →Avios 17:1 ·
+  CBD→Skywards/Etihad 20:1 · DIB→Avios/Etihad 20:1 · Citi UAE→Skywards
+  1000:800 · Amex UAE 2:1 · Amex KSA→AlFursan 2:1 · Mokafaa→AlFursan 18–24:1
+  (recurring 30–50% bonuses) · FAB→Skywards 16:1, →Etihad 12:1 ·
+  EI SmartMiles→Skywards 10:1, →Etihad 4:1 · SNB LAK→AlFursan 7:1 ·
+  Doha Miles→Avios 1:0.8.
 - Co-brand cards (ENBD/EI Skywards, ADCB/ADIB Etihad, QNB/CBQ/Doha Bank Qatar
   Airways) earn airline miles directly → they are the airline's entry, never a
   new bank entry.

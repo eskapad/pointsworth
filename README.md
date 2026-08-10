@@ -74,8 +74,17 @@ those with the airline's entry, not a bank entry.
 
 **Deliberately not listed** (no published redemption rate anywhere, no reliable
 anchor to model from): QIB Absher, Dukhan Bank DAwards, Bank Albilad Mukafaat,
-Alinma Mazaya. RAKrewards, EI SmartMiles and Doha Miles are included but
-flagged `provisional` because their ranges are modelled, not published.
+Alinma Mazaya. RAKrewards, flynas nasmiles and Riyadh Air Sfeer are included
+but flagged `provisional` because their ranges are modelled, not published.
+(EI SmartMiles, Gulf Air Falconflyer and Doha Miles graduated from provisional
+in the August 2026 refresh when published anchors appeared.)
+
+**August 2026 refresh highlights:** Emirates Skywards' May 2026 devaluation
+(premium Classic/Upgrade Rewards +15%) trimmed the high end of Skywards and
+every programme whose value derives from it (Amex UAE, Citi, CBD); FAB Rewards
+was heavily devalued (old AED 0.007 cashback rate withdrawn); Mashreq Vantage
+gained Qatar Avios (17:1) and Etihad (22:1) transfer partners, flipping its
+best-use guidance from cashback to Avios.
 
 ## Docker
 
