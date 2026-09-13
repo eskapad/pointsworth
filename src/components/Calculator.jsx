@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { COUNTRIES } from '../data/programs.js'
 import { CURRENCIES, fxPerUsd, formatMoney, formatNumber } from '../data/currencies.js'
+import { useTween } from '../hooks.js'
 import RangeBar from './RangeBar.jsx'
 
 const CONFIDENCE = {
@@ -22,7 +23,7 @@ export default function Calculator({ program, programs, currency, points, onProg
   const fx = fxPerUsd[currency]
   const n = Number(points) || 0
 
-  const value = useMemo(
+  const target = useMemo(
     () => ({
       low: n * program.usd.low * fx,
       median: n * program.usd.median * fx,
@@ -30,6 +31,14 @@ export default function Calculator({ program, programs, currency, points, onProg
     }),
     [n, program, fx],
   )
+  // Displayed values tween toward their targets so the result visibly
+  // recalculates — except on currency changes, which snap (a unit switch
+  // mid-tween would pair the new label with the old currency's number).
+  const value = {
+    low: useTween(target.low, { snapKey: currency }),
+    median: useTween(target.median, { snapKey: currency }),
+    high: useTween(target.high, { snapKey: currency }),
+  }
 
   const perPointHome = program.usd.median * fxPerUsd[program.homeCurrency]
   const conf = CONFIDENCE[program.confidence]

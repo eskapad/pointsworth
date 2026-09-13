@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { COUNTRIES } from '../data/programs.js'
 import { fxPerUsd, formatMoney } from '../data/currencies.js'
 
@@ -7,6 +7,14 @@ import { fxPerUsd, formatMoney } from '../data/currencies.js'
 export default function CompareCard({ programs, currency, selectedId, onSelect }) {
   const [tab, setTab] = useState('airline')
   const [market, setMarket] = useState('all')
+  const [grown, setGrown] = useState(false)
+
+  // Bars grow from zero (staggered) whenever the visible list changes.
+  useEffect(() => {
+    setGrown(false)
+    const raf = requestAnimationFrame(() => requestAnimationFrame(() => setGrown(true)))
+    return () => cancelAnimationFrame(raf)
+  }, [tab, market])
 
   const list = programs
     .filter((p) => p.type === tab && (market === 'all' || p.country === market))
@@ -60,7 +68,7 @@ export default function CompareCard({ programs, currency, selectedId, onSelect }
       </div>
 
       <div className="compare-list">
-        {list.map((p) => {
+        {list.map((p, i) => {
           const width = barWidth(p.usd.median)
           const perPoint = p.usd.median * fxPerUsd[currency]
           const per10k = p.usd.median * 10000 * fxPerUsd[p.homeCurrency]
@@ -79,7 +87,13 @@ export default function CompareCard({ programs, currency, selectedId, onSelect }
                 <span className="compare-owner">{p.owner}</span>
               </div>
               <div className="compare-bar-track">
-                <div className="compare-bar" style={{ width: `${Math.max(width, 4)}%` }} />
+                <div
+                  className="compare-bar"
+                  style={{
+                    width: grown ? `${Math.max(width, 4)}%` : '0%',
+                    transitionDelay: grown ? `${i * 40}ms` : '0ms',
+                  }}
+                />
               </div>
               <div className="compare-value">
                 {tab === 'airline'

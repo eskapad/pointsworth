@@ -1,15 +1,61 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { PROGRAMS, AS_OF, SCENARIO_COUNT, SOURCE_COUNT } from './data/programs.js'
+import { useTween, useInView } from './hooks.js'
 import Calculator from './components/Calculator.jsx'
 import CompareCard from './components/CompareCard.jsx'
 import ProgramGrid from './components/ProgramGrid.jsx'
+
+function StatTile({ value, label, seen }) {
+  const shown = Math.round(useTween(seen ? value : 0, { duration: 900 }))
+  return (
+    <div className="stat-tile">
+      <div className="stat-value">{shown}</div>
+      <div className="stat-label">{label}</div>
+    </div>
+  )
+}
 
 export default function App() {
   const [programId, setProgramId] = useState('emirates-skywards')
   const [currency, setCurrency] = useState('AED')
   const [points, setPoints] = useState(50000)
+  const statsRef = useRef(null)
+  const statsSeen = useInView(statsRef)
 
   const program = useMemo(() => PROGRAMS.find((p) => p.id === programId), [programId])
+  const marketCount = useMemo(() => new Set(PROGRAMS.map((p) => p.country)).size, [])
+
+  // Cursor spotlight: track pointer position per card via CSS vars.
+  useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches) return
+    const move = (e) => {
+      const t = e.target.closest?.('.card, .stat-tile')
+      if (!t) return
+      const r = t.getBoundingClientRect()
+      t.style.setProperty('--mx', `${e.clientX - r.left}px`)
+      t.style.setProperty('--my', `${e.clientY - r.top}px`)
+    }
+    document.addEventListener('mousemove', move, { passive: true })
+    return () => document.removeEventListener('mousemove', move)
+  }, [])
+
+  // Gentle parallax on the hero art.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf = 0
+    const onScroll = () => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--scroll-y', window.scrollY)
+        raf = 0
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
 
   const selectProgram = (id) => {
     setProgramId(id)
@@ -19,7 +65,14 @@ export default function App() {
   }
 
   return (
-    <div className="page">
+    <>
+      <div className="aurora" aria-hidden="true">
+        <span className="blob blob-a" />
+        <span className="blob blob-b" />
+        <span className="blob blob-c" />
+      </div>
+      <div className="stars" aria-hidden="true" />
+      <div className="page">
       <header className="topbar">
         <div className="brand">
           <span className="brand-dot" />
@@ -38,7 +91,7 @@ export default function App() {
           POINTS VALUATOR
         </div>
         <h1>
-          Know what your miles
+          Know what your miles{' '}
           <br className="hero-br" />
           <span className="hero-dim">are really worth</span>
         </h1>
@@ -48,23 +101,11 @@ export default function App() {
         </p>
       </section>
 
-      <section className="stats-row">
-        <div className="stat-tile">
-          <div className="stat-value">{PROGRAMS.length}</div>
-          <div className="stat-label">Programmes tracked</div>
-        </div>
-        <div className="stat-tile">
-          <div className="stat-value">{new Set(PROGRAMS.map((p) => p.country)).size}</div>
-          <div className="stat-label">Markets covered</div>
-        </div>
-        <div className="stat-tile">
-          <div className="stat-value">{SCENARIO_COUNT}</div>
-          <div className="stat-label">Redemption scenarios modelled</div>
-        </div>
-        <div className="stat-tile">
-          <div className="stat-value">{SOURCE_COUNT}</div>
-          <div className="stat-label">Public sources</div>
-        </div>
+      <section className="stats-row" ref={statsRef}>
+        <StatTile value={PROGRAMS.length} label="Programmes tracked" seen={statsSeen} />
+        <StatTile value={marketCount} label="Markets covered" seen={statsSeen} />
+        <StatTile value={SCENARIO_COUNT} label="Redemption scenarios modelled" seen={statsSeen} />
+        <StatTile value={SOURCE_COUNT} label="Public sources" seen={statsSeen} />
       </section>
 
       <main className="main-grid">
@@ -116,6 +157,7 @@ export default function App() {
           </p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   )
 }

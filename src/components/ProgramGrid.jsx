@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { COUNTRIES } from '../data/programs.js'
 import { fxPerUsd, formatMoney } from '../data/currencies.js'
 import RangeBar from './RangeBar.jsx'
@@ -18,10 +18,41 @@ const TYPES = [
 export default function ProgramGrid({ programs, selectedId, onSelect }) {
   const [market, setMarket] = useState('all')
   const [type, setType] = useState('all')
+  const gridRef = useRef(null)
 
   const list = programs.filter(
     (p) => (market === 'all' || p.country === market) && (type === 'all' || p.type === type),
   )
+
+  // Entrance choreography: cards rise in with a stagger as they reach the
+  // viewport. Cards that already animated keep their .in class across filters.
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+    const cards = [...grid.querySelectorAll('.program-card:not(.in)')]
+    if (!cards.length) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cards.forEach((c) => c.classList.add('in'))
+      return
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return
+          e.target.classList.add('in')
+          // Clear the stagger delay once in, so hover transforms stay snappy.
+          setTimeout(() => (e.target.style.transitionDelay = ''), 800)
+          io.unobserve(e.target)
+        })
+      },
+      { threshold: 0.12 },
+    )
+    cards.forEach((c, i) => {
+      c.style.transitionDelay = `${(i % 8) * 55}ms`
+      io.observe(c)
+    })
+    return () => io.disconnect()
+  }, [market, type])
 
   return (
     <section className="grid-section">
@@ -46,7 +77,7 @@ export default function ProgramGrid({ programs, selectedId, onSelect }) {
         </div>
         <span className="filter-count">{list.length} programme{list.length === 1 ? '' : 's'}</span>
       </div>
-      <div className="program-grid">
+      <div className="program-grid" ref={gridRef}>
         {list.map((p) => {
           const fx = fxPerUsd[p.homeCurrency]
           const unit = p.unit === 'Avios' ? 'Avios' : p.unit
